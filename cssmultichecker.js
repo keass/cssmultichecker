@@ -6,7 +6,8 @@
 
 /*
 북마클릿 부분
-javascript: (function () {var jsCode = document.createElement('script');jsCode.setAttribute('src', 'http://localhost/calendar_git/src/js/cssmultichecker.js');document.body.appendChild(jsCode);}());
+javascript: (function () {var jsCode = document.createElement('script');jsCode.setAttribute('type','text/javascript');jsCode.setAttribute('src', 'http://localhost/cssmultichecker/cssmultichecker.js');document.body.appendChild(jsCode);}());
+javascript: (function () {var jsCode = document.createElement('script');jsCode.setAttribute('type','text/javascript');jsCode.setAttribute('src', 'https://raw.githubusercontent.com/keass/cssmultichecker/master/cssmultichecker.js');document.body.appendChild(jsCode);}());
 */
 
 
@@ -35,10 +36,29 @@ multicss = {
                 btn_array[property].innerText = property;
                 btn_array[property].setAttribute('href',this.csss[property]);
                 btn_wrapper.appendChild(btn_array[property]);
+                console.log(this.csss[property]);
         }
+
+    },
+    file:function(){
+        var xmlhttp = new XMLHttpRequest();
+        var url = this.csss[property];
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+
+        //var t = JSON.parse(xmlhttp.responseText);
+        //console.log(t);
+        //console.log(url);
+        //console.log(xmlhttp,"xmlhttp");
+        //console.log(xmlhttp.status,"status");
+        //console.log(xmlhttp.readyState,"readystate");
     }
 };
-//console.log(multicss.css_name_collector());
-//console.log(multicss.createBtn());
+
 multicss.css_name_collector();
 multicss.createBtn();
+multicss.file();
+
+/*
+* http://www.w3schools.com/json/tryit.asp?filename=tryjson_http
+* */
